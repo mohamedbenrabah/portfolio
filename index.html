@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#0a0e14;font-family:'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  ::selection{background:rgba(52,211,153,0.28);color:#fff;}
+  @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  a{text-decoration:none;color:inherit;}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="min-height:100vh;background:var(--bg,#0a0e14);color:var(--text,#e6edf3);transition:background .4s ease,color .4s ease;overflow-x:hidden;">
+
+  <!-- ====== NAV ====== -->
+  <nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(20px,5vw,64px);backdrop-filter:blur(14px);background:var(--nav,rgba(10,14,20,0.72));border-bottom:1px solid var(--border,#1f2733);transition:background .4s ease,border-color .4s ease;">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;letter-spacing:-0.02em;">
+      <span style="color:var(--accent,#34d399);">&gt;_</span>
+      <span style="color:var(--text,#e6edf3);">mbr</span><span style="color:var(--accent,#34d399);animation:blink 1.1s steps(1) infinite;">█</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(6px,2vw,28px);font-family:'IBM Plex Mono',monospace;font-size:13px;">
+      <a href="#about" class="navlink" style="display:none;color:var(--text-dim,#8b97a7);transition:color .2s;">{{ t.nav_about }}</a>
+      <a href="#work" class="navlink" style="display:none;color:var(--text-dim,#8b97a7);transition:color .2s;">{{ t.nav_work }}</a>
+      <a href="#skills" class="navlink" style="display:none;color:var(--text-dim,#8b97a7);transition:color .2s;">{{ t.nav_skills }}</a>
+      <a href="#contact" class="navlink" style="display:none;color:var(--text-dim,#8b97a7);transition:color .2s;">{{ t.nav_contact }}</a>
+      <button onClick="{{ toggleLang }}" title="Language" style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer;background:transparent;border:1px solid var(--border,#1f2733);color:var(--text-dim,#8b97a7);border-radius:6px;padding:6px 9px;letter-spacing:0.04em;transition:all .2s;">{{ langLabel }}</button>
+      <button onClick="{{ toggleTheme }}" title="Theme" style="display:flex;align-items:center;justify-content:center;width:34px;height:32px;cursor:pointer;background:transparent;border:1px solid var(--border,#1f2733);color:var(--text-dim,#8b97a7);border-radius:6px;transition:all .2s;">{{ themeIcon }}</button>
+      <a href="assets/Mohamed-Ben-Rabah-CV.pdf" download class="reveal" style="display:flex;align-items:center;gap:7px;font-weight:600;background:var(--accent,#34d399);color:#04120c;border-radius:6px;padding:8px 13px;transition:transform .2s,box-shadow .2s;">↓ {{ t.resume }}</a>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <header id="top" style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(40px,8vw,96px) clamp(20px,5vw,64px) clamp(48px,7vw,80px);">
+    <div style="position:absolute;top:-40px;right:-120px;width:480px;height:480px;background:radial-gradient(circle,var(--glow,rgba(52,211,153,0.12)),transparent 70%);pointer-events:none;filter:blur(8px);"></div>
+    <div style="display:grid;grid-template-columns:1fr;gap:clamp(36px,6vw,72px);align-items:center;" data-hero-grid>
+      <div>
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent,#34d399);border:1px solid var(--accent-line,rgba(52,211,153,0.4));background:var(--accent-dim,rgba(52,211,153,0.08));border-radius:100px;padding:6px 14px;margin-bottom:26px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--accent,#34d399);box-shadow:0 0 8px var(--accent,#34d399);"></span>{{ t.available }}
+        </div>
+        <h1 class="reveal" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,8vw,76px);line-height:1.02;letter-spacing:-0.03em;margin:0 0 20px;color:var(--text,#e6edf3);">Mohamed<br>Ben Rabah</h1>
+        <p class="reveal" style="font-family:'IBM Plex Mono',monospace;font-size:clamp(15px,2.4vw,19px);color:var(--accent,#34d399);margin:0 0 22px;letter-spacing:-0.01em;">{{ t.role }}</p>
+        <p class="reveal" style="font-size:clamp(15px,2.2vw,18px);line-height:1.7;color:var(--text-dim,#8b97a7);max-width:540px;margin:0 0 34px;">{{ t.hero_blurb }}</p>
+        <div class="reveal" style="display:flex;flex-wrap:wrap;gap:14px;">
+          <a href="#work" style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;background:var(--accent,#34d399);color:#04120c;border-radius:8px;padding:13px 22px;transition:transform .2s,box-shadow .2s;" onMouseEnter="{{ liftIn }}" onMouseLeave="{{ liftOut }}">{{ t.cta_work }} →</a>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;background:transparent;color:var(--text,#e6edf3);border:1px solid var(--border,#1f2733);border-radius:8px;padding:13px 22px;transition:border-color .2s,color .2s;" onMouseEnter="{{ borderIn }}" onMouseLeave="{{ borderOut }}">{{ t.cta_contact }}</a>
+        </div>
+      </div>
+      <div class="reveal" data-delay="180" style="animation:floaty 6s ease-in-out infinite;">
+        <div style="border:1px solid var(--border,#1f2733);border-radius:14px;overflow:hidden;background:var(--bg-elev,#10151e);box-shadow:0 30px 70px -30px rgba(0,0,0,0.6);">
+          <div style="display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--border,#1f2733);background:var(--bg-elev2,#161d28);">
+            <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#febc2e;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#28c840;"></span>
+            <span style="margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-mute,#5b6675);">bash — developer</span>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.85;padding:20px 18px;">
+            <div><span style="color:var(--accent,#34d399);">$</span> <span style="color:var(--text,#e6edf3);">whoami</span></div>
+            <div style="color:var(--text-dim,#8b97a7);">mohamed_ben_rabah</div>
+            <div style="margin-top:10px;"><span style="color:var(--accent,#34d399);">$</span> <span style="color:var(--text,#e6edf3);">stack --core</span></div>
+            <div style="color:var(--text-dim,#8b97a7);">java · spring-boot · angular</div>
+            <div style="margin-top:10px;"><span style="color:var(--accent,#34d399);">$</span> <span style="color:var(--text,#e6edf3);">cat focus.txt</span></div>
+            <div style="color:var(--text-dim,#8b97a7);">{{ t.term_focus }}</div>
+            <div style="margin-top:10px;"><span style="color:var(--accent,#34d399);">$</span> <span style="color:var(--text,#e6edf3);">status</span></div>
+            <div style="color:var(--accent,#34d399);">● {{ t.term_status }}<span style="animation:blink 1.1s steps(1) infinite;">_</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== ABOUT ====== -->
+  <section id="about" style="max-width:1180px;margin:0 auto;padding:clamp(48px,8vw,96px) clamp(20px,5vw,64px);">
+    <p class="reveal" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent,#34d399);margin:0 0 14px;letter-spacing:0.02em;">{{ t.about_kicker }}</p>
+    <div style="display:grid;gap:clamp(32px,5vw,64px);align-items:start;" data-about-grid>
+      <div>
+        <h2 class="reveal" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(26px,4vw,40px);line-height:1.12;letter-spacing:-0.02em;margin:0 0 24px;color:var(--text,#e6edf3);max-width:18ch;">{{ t.about_title }}</h2>
+        <p class="reveal" style="font-size:clamp(15px,2vw,17px);line-height:1.75;color:var(--text-dim,#8b97a7);margin:0 0 18px;">{{ t.about_p1 }}</p>
+        <p class="reveal" style="font-size:clamp(15px,2vw,17px);line-height:1.75;color:var(--text-dim,#8b97a7);margin:0;">{{ t.about_p2 }}</p>
+      </div>
+      <div class="reveal" style="position:relative;">
+        <div style="position:relative;border:1px solid var(--border,#1f2733);border-radius:14px;overflow:hidden;background:var(--bg-elev,#10151e);">
+          <div style="display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--border,#1f2733);background:var(--bg-elev2,#161d28);">
+            <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#febc2e;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#28c840;"></span>
+            <span style="margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-mute,#5b6675);">~/mohamed.jpg</span>
+          </div>
+          <img src="assets/mohamed.jpg" alt="Mohamed Ben Rabah" style="display:block;width:100%;height:auto;filter:grayscale(0.15) contrast(1.02);">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+          <div style="border:1px solid var(--border,#1f2733);border-radius:10px;padding:14px;background:var(--bg-elev,#10151e);">
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:var(--accent,#34d399);line-height:1;">3+</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-mute,#5b6675);margin-top:6px;">{{ t.stat_exp }}</div>
+          </div>
+          <div style="border:1px solid var(--border,#1f2733);border-radius:10px;padding:14px;background:var(--bg-elev,#10151e);">
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:var(--text,#e6edf3);line-height:1;">μs</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-mute,#5b6675);margin-top:6px;">{{ t.stat_arch }} · Microservices</div>
+          </div>
+          <div style="grid-column:1/-1;border:1px solid var(--border,#1f2733);border-radius:10px;padding:14px;background:var(--bg-elev,#10151e);">
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--text,#e6edf3);line-height:1.2;">{{ t.stat_honors_v }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-mute,#5b6675);margin-top:6px;">{{ t.stat_honors }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WORK / EXPERIENCE ====== -->
+  <section id="work" style="max-width:1180px;margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,64px);">
+    <p class="reveal" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent,#34d399);margin:0 0 14px;letter-spacing:0.02em;">{{ t.work_kicker }}</p>
+    <h2 class="reveal" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,4.5vw,44px);letter-spacing:-0.02em;margin:0 0 8px;color:var(--text,#e6edf3);">{{ t.work_title }}</h2>
+    <p class="reveal" style="font-size:16px;color:var(--text-dim,#8b97a7);margin:0 0 48px;">{{ t.work_sub }}</p>
+
+    <div style="position:relative;">
+      <sc-for list="{{ experiences }}" as="exp" hint-placeholder-count="4">
+        <div class="reveal" style="position:relative;display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,3vw,32px);padding-bottom:clamp(28px,4vw,44px);">
+          <!-- rail -->
+          <div style="display:flex;flex-direction:column;align-items:center;width:clamp(40px,8vw,72px);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--accent,#34d399);">{{ exp.idx }}</div>
+            <div style="flex:1;width:1px;background:var(--border,#1f2733);margin-top:8px;"></div>
+          </div>
+          <!-- card -->
+          <div style="border:1px solid var(--border,#1f2733);border-radius:14px;padding:clamp(20px,3vw,30px);background:var(--bg-elev,#10151e);transition:border-color .25s ease,transform .25s ease;" onMouseEnter="{{ cardIn }}" onMouseLeave="{{ cardOut }}">
+            <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:4px;">
+              <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(18px,2.6vw,23px);color:var(--text,#e6edf3);">{{ exp.company }}</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--accent,#34d399);">{{ exp.period }}</div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px;">
+              <span style="font-size:14px;color:var(--text-dim,#8b97a7);">{{ exp.role }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-mute,#5b6675);border:1px solid var(--border,#1f2733);border-radius:100px;padding:2px 9px;">{{ exp.tag }}</span>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--text,#e6edf3);background:var(--accent-dim,rgba(52,211,153,0.08));border-left:2px solid var(--accent,#34d399);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:18px;line-height:1.5;">{{ exp.project }}</div>
+            <ul style="list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:9px;">
+              <sc-for list="{{ exp.bullets }}" as="b" hint-placeholder-count="3">
+                <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.6;color:var(--text-dim,#8b97a7);">
+                  <span style="color:var(--accent,#34d399);font-family:'IBM Plex Mono',monospace;flex-shrink:0;">▸</span>
+                  <span>{{ b }}</span>
+                </li>
+              </sc-for>
+            </ul>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;">
+              <sc-for list="{{ exp.tech }}" as="chip" hint-placeholder-count="6">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-dim,#8b97a7);background:var(--chip,#161d28);border:1px solid var(--border,#1f2733);border-radius:6px;padding:4px 9px;">{{ chip }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ====== SKILLS ====== -->
+  <section id="skills" style="max-width:1180px;margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,64px);">
+    <p class="reveal" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent,#34d399);margin:0 0 14px;letter-spacing:0.02em;">{{ t.skills_kicker }}</p>
+    <h2 class="reveal" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(28px,4.5vw,44px);letter-spacing:-0.02em;margin:0 0 8px;color:var(--text,#e6edf3);">{{ t.skills_title }}</h2>
+    <p class="reveal" style="font-size:16px;color:var(--text-dim,#8b97a7);margin:0 0 44px;">{{ t.skills_sub }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:14px;">
+      <sc-for list="{{ skills }}" as="grp" hint-placeholder-count="6">
+        <div class="reveal" style="border:1px solid var(--border,#1f2733);border-radius:14px;padding:22px;background:var(--bg-elev,#10151e);transition:border-color .25s ease;" onMouseEnter="{{ cardIn }}" onMouseLeave="{{ cardOut }}">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <span style="color:var(--accent,#34d399);font-family:'IBM Plex Mono',monospace;font-size:13px;">#</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;color:var(--text,#e6edf3);">{{ grp.label }}</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;">
+            <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="5">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-dim,#8b97a7);background:var(--chip,#161d28);border:1px solid var(--border,#1f2733);border-radius:6px;padding:5px 10px;transition:all .2s;" onMouseEnter="{{ chipIn }}" onMouseLeave="{{ chipOut }}">{{ it }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT ====== -->
+  <section id="contact" style="max-width:1180px;margin:0 auto;padding:clamp(48px,8vw,110px) clamp(20px,5vw,64px) clamp(40px,6vw,70px);">
+    <div class="reveal" style="position:relative;border:1px solid var(--border,#1f2733);border-radius:20px;overflow:hidden;background:var(--bg-elev,#10151e);padding:clamp(36px,6vw,72px) clamp(24px,5vw,64px);text-align:center;">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--glow,rgba(52,211,153,0.12)),transparent 60%);pointer-events:none;"></div>
+      <div style="position:relative;">
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent,#34d399);margin:0 0 16px;">{{ t.contact_kicker }}</p>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,6vw,56px);letter-spacing:-0.03em;margin:0 0 16px;color:var(--text,#e6edf3);">{{ t.contact_title }}</h2>
+        <p style="font-size:clamp(15px,2.2vw,18px);line-height:1.7;color:var(--text-dim,#8b97a7);max-width:520px;margin:0 auto 32px;">{{ t.contact_sub }}</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:30px;">
+          <a href="mailto:mohamed.benrabah@esprit.tn" style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;background:var(--accent,#34d399);color:#04120c;border-radius:8px;padding:14px 26px;transition:transform .2s,box-shadow .2s;" onMouseEnter="{{ liftIn }}" onMouseLeave="{{ liftOut }}">✉ {{ t.contact_email }}</a>
+          <a href="assets/Mohamed-Ben-Rabah-CV.pdf" download style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;background:transparent;color:var(--text,#e6edf3);border:1px solid var(--border,#1f2733);border-radius:8px;padding:14px 26px;transition:border-color .2s,color .2s;" onMouseEnter="{{ borderIn }}" onMouseLeave="{{ borderOut }}">↓ {{ t.contact_resume }}</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;font-family:'IBM Plex Mono',monospace;font-size:13px;">
+          <a href="mailto:mohamed.benrabah@esprit.tn" style="color:var(--text-dim,#8b97a7);transition:color .2s;" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ linkOut }}">mohamed.benrabah@esprit.tn</a>
+          <a href="tel:+21653046982" style="color:var(--text-dim,#8b97a7);transition:color .2s;" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ linkOut }}">+216 53 046 982</a>
+          <a href="https://www.linkedin.com/in/mohamed-ben-rabah-586685159/" target="_blank" rel="noopener" style="color:var(--text-dim,#8b97a7);transition:color .2s;" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ linkOut }}">LinkedIn</a>
+          <a href="https://github.com/mohamedbenrabah" target="_blank" rel="noopener" style="color:var(--text-dim,#8b97a7);transition:color .2s;" onMouseEnter="{{ linkIn }}" onMouseLeave="{{ linkOut }}">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:36px;padding-top:24px;border-top:1px solid var(--border,#1f2733);">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-mute,#5b6675);">© 2026 · {{ t.footer }}</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-mute,#5b6675);"><span style="color:var(--text-dim,#8b97a7);">{{ t.langs_label }}:</span> {{ t.langs }}</span>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'fr', theme: 'light', ready: false };
+  content = null;
+
+  PAL = {
+    dark: {
+      '--bg':'#0a0e14','--bg-elev':'#10151e','--bg-elev2':'#161d28','--border':'#1f2733',
+      '--text':'#e6edf3','--text-dim':'#8b97a7','--text-mute':'#5b6675',
+      '--accent':'#34d399','--accent-dim':'rgba(52,211,153,0.08)','--accent-line':'rgba(52,211,153,0.4)',
+      '--nav':'rgba(10,14,20,0.72)','--glow':'rgba(52,211,153,0.12)','--chip':'#161d28'
+    },
+    light: {
+      '--bg':'#f5f7f8','--bg-elev':'#ffffff','--bg-elev2':'#eef1f3','--border':'#e1e6ea',
+      '--text':'#0d1521','--text-dim':'#4a5868','--text-mute':'#94a3b0',
+      '--accent':'#0a9d6c','--accent-dim':'rgba(10,157,108,0.08)','--accent-line':'rgba(10,157,108,0.35)',
+      '--nav':'rgba(245,247,248,0.8)','--glow':'rgba(10,157,108,0.1)','--chip':'#eef1f3'
+    }
+  };
+
+  applyTheme(theme){
+    const root = document.documentElement;
+    const p = this.PAL[theme];
+    for (const k in p) root.style.setProperty(k, p[k]);
+  }
+
+  async _loadContent(){
+    try {
+      const [en, fr] = await Promise.all([
+        fetch('./content.en.json').then(r=>r.json()),
+        fetch('./content.fr.json').then(r=>r.json())
+      ]);
+      this.content = { en, fr };
+      this.setState({ ready: true });
+      requestAnimationFrame(()=>{ this._mountReveals(); this._checkReveals(); });
+    } catch(e){ console.error('Failed to load content JSON', e); }
+  }
+
+  componentDidMount(){
+    this.applyTheme(this.state.theme);
+    this._loadContent();
+    this._mountReveals();
+    this._applyNavResponsive();
+    this._check = () => this._checkReveals();
+    // capture phase catches scrolls from any scroll container, not just window
+    window.addEventListener('scroll', this._check, { passive:true, capture:true });
+    document.addEventListener('scroll', this._check, { passive:true, capture:true });
+    window.addEventListener('resize', this._rs = ()=>{ this._applyNavResponsive(); this._checkReveals(); });
+    this._checkReveals();
+    requestAnimationFrame(()=>this._checkReveals());
+    // polling fallback guarantees reveals fire regardless of which element scrolls
+    this._poll = setInterval(()=>{
+      this._checkReveals();
+      if(document.querySelectorAll('.reveal:not([data-shown])').length === 0){ clearInterval(this._poll); this._poll=null; }
+    }, 220);
+  }
+
+  componentDidUpdate(){ this._mountReveals(); this._applyNavResponsive(); this._checkReveals(); }
+
+  componentWillUnmount(){
+    if(this._check){ window.removeEventListener('scroll', this._check, true); document.removeEventListener('scroll', this._check, true); }
+    if(this._rs) window.removeEventListener('resize', this._rs);
+    if(this._poll) clearInterval(this._poll);
+  }
+
+  _mountReveals(){
+    document.querySelectorAll('.reveal').forEach((el,i)=>{
+      if(el.__revInit) return;
+      el.__revInit = true;
+      el.style.opacity='0';
+      el.style.transform='translateY(22px)';
+      el.style.transition='opacity .6s cubic-bezier(.2,.7,.3,1), transform .6s cubic-bezier(.2,.7,.3,1)';
+      el.style.transitionDelay = ((el.dataset.delay ? +el.dataset.delay : (i%4)*70))+'ms';
+    });
+  }
+
+  _checkReveals(){
+    const h = window.innerHeight || document.documentElement.clientHeight;
+    document.querySelectorAll('.reveal').forEach(el=>{
+      if(el.__shown) return;
+      const r = el.getBoundingClientRect();
+      if(r.top < h * 0.92 && r.bottom > -40){
+        el.__shown = true;
+        el.setAttribute('data-shown','');
+        el.style.opacity='1';
+        el.style.transform='none';
+      }
+    });
+  }
+
+  _applyNavResponsive(){
+    const wide = window.innerWidth >= 760;
+    document.querySelectorAll('.navlink').forEach(a=>{ a.style.display = wide ? 'inline-block' : 'none'; });
+    const hg = document.querySelector('[data-hero-grid]');
+    if(hg) hg.style.gridTemplateColumns = window.innerWidth >= 900 ? '1.15fr 0.85fr' : '1fr';
+    const ag = document.querySelector('[data-about-grid]');
+    if(ag) ag.style.gridTemplateColumns = window.innerWidth >= 860 ? '1.3fr 0.7fr' : '1fr';
+  }
+
+  toggleTheme = () => {
+    const next = this.state.theme === 'dark' ? 'light' : 'dark';
+    this.applyTheme(next);
+    this.setState({ theme: next });
+  };
+
+  toggleLang = () => this.setState(s => ({ lang: s.lang === 'en' ? 'fr' : 'en' }));
+
+  liftIn = (e) => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 10px 30px var(--accent-dim)'; };
+  liftOut = (e) => { e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='none'; };
+  borderIn = (e) => { e.currentTarget.style.borderColor='var(--accent)'; e.currentTarget.style.color='var(--accent)'; };
+  borderOut = (e) => { e.currentTarget.style.borderColor='var(--border)'; e.currentTarget.style.color='var(--text)'; };
+  cardIn = (e) => { e.currentTarget.style.borderColor='var(--accent-line)'; e.currentTarget.style.transform='translateY(-3px)'; };
+  cardOut = (e) => { e.currentTarget.style.borderColor='var(--border)'; e.currentTarget.style.transform='none'; };
+  chipIn = (e) => { e.currentTarget.style.borderColor='var(--accent)'; e.currentTarget.style.color='var(--accent)'; };
+  chipOut = (e) => { e.currentTarget.style.borderColor='var(--border)'; e.currentTarget.style.color='var(--text-dim)'; };
+  linkIn = (e) => { e.currentTarget.style.color='var(--accent)'; };
+  linkOut = (e) => { e.currentTarget.style.color='var(--text-dim)'; };
+  navIn = (e) => { e.currentTarget.style.color='var(--accent)'; };
+
+  renderVals(){
+    const lang = this.state.lang;
+    const c = (this.content && this.content[lang]) || { t:{}, experiences:[], skills:[] };
+    const experiences = (c.experiences || []).map((e, i) => ({
+      idx: String(i + 1).padStart(2, '0'),
+      company: e.company, tag: e.tag,
+      period: e.period, role: e.role, project: e.project,
+      bullets: e.bullets, tech: e.tech
+    }));
+    const skills = (c.skills || []).map(g => ({ label: g.label, items: g.items }));
+    return {
+      t: c.t || {},
+      experiences, skills,
+      langLabel: lang === 'en' ? 'EN / FR' : 'FR / EN',
+      themeIcon: this.state.theme === 'dark' ? '☾' : '☀',
+      rootRef: (el)=>{ this._root = el; },
+      toggleTheme: this.toggleTheme,
+      toggleLang: this.toggleLang,
+      liftIn: this.liftIn, liftOut: this.liftOut, borderIn: this.borderIn, borderOut: this.borderOut,
+      cardIn: this.cardIn, cardOut: this.cardOut, chipIn: this.chipIn, chipOut: this.chipOut,
+      linkIn: this.linkIn, linkOut: this.linkOut
+    };
+  }
+}
+</script>
+</body>
+</html>

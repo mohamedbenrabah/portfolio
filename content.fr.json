@@ -1,0 +1,118 @@
+{
+  "t": {
+    "nav_about": "à propos",
+    "nav_work": "projets",
+    "nav_skills": "compétences",
+    "nav_contact": "contact",
+    "resume": "CV",
+    "available": "Disponible pour de nouvelles opportunités",
+    "role": "Développeur Full Stack · Java / Spring Boot / Angular",
+    "hero_blurb": "Je conçois des applications d'entreprise sécurisées et à grande échelle — des moteurs de workflow dynamiques aux portails de services publics — sur toute la stack Java & Angular.",
+    "cta_work": "Voir les projets",
+    "cta_contact": "Me contacter",
+    "term_focus": "microservices sécurisés · orchestration de workflows · UIs soignées",
+    "term_status": "disponible",
+    "about_kicker": "// à propos",
+    "about_title": "Des back-ends fiables et des front-ends Angular soignés.",
+    "about_p1": "Je suis ingénieur full-stack basé à Tunis, spécialisé dans l'écosystème Java / Spring Boot et Angular. Depuis trois ans, je livre des plateformes microservices pour des clients publics, assurances et bancaires — des systèmes où sécurité, scalabilité et fiabilité sont essentielles.",
+    "about_p2": "Mon travail couvre l'orchestration de workflows dynamiques avec Temporal, la gestion des identités et des accès avec Keycloak, le traitement batch et les architectures événementielles sur Kafka — avec une forte discipline DevOps et qualité de code.",
+    "stat_exp": "Ans d’expérience",
+    "stat_stack": "Stack principale",
+    "stat_honors": "Diplôme d’ingénieur",
+    "stat_honors_v": "Génie Logiciel — ESPRIT",
+    "stat_arch": "Architecture",
+    "work_kicker": "// expérience",
+    "work_title": "Projets sélectionnés",
+    "work_sub": "Réalisations en consulting, secteur public et finance.",
+    "skills_kicker": "// stack",
+    "skills_title": "Compétences techniques",
+    "skills_sub": "Les outils que j’utilise, regroupés par domaine.",
+    "contact_kicker": "// contact",
+    "contact_title": "Construisons ensemble.",
+    "contact_sub": "Ouvert aux postes full-stack et backend. Contactez-moi — je réponds généralement sous 24 h.",
+    "contact_email": "M’écrire",
+    "contact_resume": "Télécharger le CV",
+    "langs_label": "Langues",
+    "langs": "Arabe (maternelle) · Français (courant) · Anglais (intermédiaire)",
+    "present": "Aujourd’hui",
+    "footer": "Conçu & développé par Mohamed Ben Rabah"
+  },
+  "experiences": [
+    {
+      "company": "MS Solutions",
+      "tag": "Consulting · Tunisia",
+      "period": "Mars 2026 — Aujourd’hui",
+      "role": "Développeur Full Stack — Java & Angular",
+      "project": "Plateforme de gestion des accès (RBAC) — multi-tenant",
+      "bullets": [
+        "Conception et développement d’un système centralisé de gestion des accès (RBAC) multi-tenant : gestion fine des rôles, permissions et habilitations.",
+        "Développement d’un SDK RBAC réutilisable — conversion des rôles JWT, résolution des permissions avec cache, auto-configuration Spring Security — intégré par les différents back-ends.",
+        "Intégration de Keycloak en multi-realms (JWT) et développement d’un Event Listener SPI personnalisé pour la synchronisation des événements utilisateurs.",
+        "Sécurité applicative : verrouillage de compte et gestion du cycle d’invitation des utilisateurs."
+      ],
+      "tech": ["Spring Boot", "Java", "Spring Security", "Keycloak (SPI, multi-realms)", "OAuth2 / OIDC", "JWT", "PostgreSQL", "Angular", "Docker"]
+    },
+    {
+      "company": "MS Solutions",
+      "tag": "Consulting · Tunisia",
+      "period": "Oct. 2025 — Févr. 2026",
+      "role": "Développeur Full Stack — Java & Angular",
+      "project": "Moteur de workflow dynamique",
+      "bullets": [
+        "Développement d’un moteur de workflow dynamique pour la modélisation graphique des processus métiers.",
+        "Formulaires dynamiques configurables par étape (drag-and-drop).",
+        "Orchestration et exécution des workflows avec Temporal, monitoring via Temporal UI.",
+        "Intégration d’APIs REST externes pour l’interopérabilité entre services à chaque étape.",
+        "Sécurité et authentification via Keycloak (gestion des rôles et accès)."
+      ],
+      "tech": ["Spring Boot", "Java", "Temporal SDK", "Kafka", "Keycloak", "PostgreSQL", "RestTemplate", "Angular", "Docker", "Microservices"]
+    },
+    {
+      "company": "Inetum",
+      "tag": "Tunisia · Gov",
+      "period": "Juil. 2023 — Sept. 2025",
+      "role": "Développeur Full Stack — Java / Angular",
+      "project": "E-consulat — Numérisation des services consulaires · Ministère des Affaires Étrangères",
+      "bullets": [
+        "Développement et maintenance d’un Back Office de gestion documentaire pour la diaspora tunisienne.",
+        "Conception d’un portail de services consulaires : rendez-vous, demandes administratives, suivi des dossiers.",
+        "Intégration de la signature électronique via Digigo, connectée au système de l’état civil.",
+        "Mise en œuvre des mécanismes de sécurité et d’authentification via Keycloak.",
+        "Module de communication groupée basé sur des traitements batch pour les envois massifs."
+      ],
+      "tech": ["Spring Boot", "Java", "JHipster", "Keycloak", "PostgreSQL", "Spring Batch", "WebSocket", "OpenAPI Generator", "Groovy", "Apache POI", "Angular", "Microservices"]
+    },
+    {
+      "company": "Inetum",
+      "tag": "Switzerland · Insurance",
+      "period": "Janv. 2024 — Août 2024",
+      "role": "Développeur Full Stack — Angular",
+      "project": "Assurance ECA — Gestion des souscriptions",
+      "bullets": [
+        "Développement d’une application web pour les souscriptions en ligne aux assurances ECA.",
+        "Création d’un Back Office de suivi et de traitement des demandes via un CRM.",
+        "Suivi et analyse du trafic utilisateur via Google Analytics."
+      ],
+      "tech": ["Angular", "TypeScript", "Google Analytics"]
+    },
+    {
+      "company": "Inetum",
+      "tag": "Tunisia · Internship",
+      "period": "Févr. 2023 — Juil. 2023",
+      "role": "Stage de fin d’études (PFE)",
+      "project": "Processus de financement e-banking",
+      "bullets": [
+        "Développement d’une application web pour un processus de financement dans une plateforme e-banking."
+      ],
+      "tech": ["Spring Boot", "Angular", "Keycloak", "PostgreSQL", "NG-Zorro", "Formly", "Docker"]
+    }
+  ],
+  "skills": [
+    { "label": "Backend", "items": ["Java", "Spring Boot", "Spring Batch", "Spring Cloud", "Microservices", "Temporal", "Kafka", "RestTemplate", "MinIO", "Liquibase / Flyway", "Keycloak Admin-Client"] },
+    { "label": "Sécurité & Auth", "items": ["Keycloak", "OAuth2 / OIDC", "JWT", "Spring Security"] },
+    { "label": "Frontend", "items": ["Angular", "TypeScript", "JavaScript", "HTML5", "CSS3", "NG-Zorro", "PrimeNG", "Formly", "Bootstrap"] },
+    { "label": "Bases de données", "items": ["PostgreSQL", "MySQL", "MongoDB"] },
+    { "label": "DevOps", "items": ["Docker", "SonarQube", "Prometheus", "Grafana"] },
+    { "label": "Outils & Méthode", "items": ["Git", "GitHub", "GitLab", "UML", "Agile", "Scrum"] }
+  ]
+}

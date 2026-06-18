@@ -1,0 +1,118 @@
+{
+  "t": {
+    "nav_about": "about",
+    "nav_work": "work",
+    "nav_skills": "skills",
+    "nav_contact": "contact",
+    "resume": "Resume",
+    "available": "Available for opportunities",
+    "role": "Full Stack Developer · Java / Spring Boot / Angular",
+    "hero_blurb": "I build secure, large-scale enterprise applications — from dynamic workflow engines to government service portals — across the full Java & Angular stack.",
+    "cta_work": "View work",
+    "cta_contact": "Get in touch",
+    "term_focus": "secure microservices · workflow orchestration · clean UIs",
+    "term_status": "available for work",
+    "about_kicker": "// about",
+    "about_title": "Engineering reliable backends and clean Angular front-ends.",
+    "about_p1": "I’m a full-stack engineer based in Tunis, specialising in the Java / Spring Boot ecosystem and Angular. Over the past three years I’ve shipped microservice platforms for government, insurance and banking clients — systems where security, scalability and correctness are non-negotiable.",
+    "about_p2": "My work spans dynamic workflow orchestration with Temporal, identity and access management with Keycloak, batch processing, and event-driven architectures on Kafka — delivered with a strong DevOps and code-quality discipline.",
+    "stat_exp": "Years experience",
+    "stat_stack": "Core stack",
+    "stat_honors": "Engineering degree",
+    "stat_honors_v": "Software Eng. — ESPRIT",
+    "stat_arch": "Architecture",
+    "work_kicker": "// experience",
+    "work_title": "Selected work",
+    "work_sub": "Projects delivered across consulting, government and finance.",
+    "skills_kicker": "// stack",
+    "skills_title": "Tech stack",
+    "skills_sub": "The tools I reach for, grouped by domain.",
+    "contact_kicker": "// contact",
+    "contact_title": "Let’s build something.",
+    "contact_sub": "Open to full-stack and backend roles. Reach out — I usually reply within a day.",
+    "contact_email": "Email me",
+    "contact_resume": "Download CV",
+    "langs_label": "Languages",
+    "langs": "Arabic (native) · French (fluent) · English (intermediate)",
+    "present": "Present",
+    "footer": "Designed & built by Mohamed Ben Rabah"
+  },
+  "experiences": [
+    {
+      "company": "MS Solutions",
+      "tag": "Consulting · Tunisia",
+      "period": "Mar 2026 — Present",
+      "role": "Full Stack Developer — Java & Angular",
+      "project": "Access Management Platform (RBAC) — multi-tenant",
+      "bullets": [
+        "Designed and built a centralised, multi-tenant role-based access control (RBAC) system with fine-grained roles, permissions and entitlements.",
+        "Developed a reusable RBAC SDK — JWT role conversion, cached permission resolution and Spring Security auto-configuration — integrated across the back-end services.",
+        "Integrated Keycloak in multi-realm mode (JWT) and built a custom Event Listener SPI to synchronise user events.",
+        "Hardened application security with account lockout and a full user-invitation lifecycle."
+      ],
+      "tech": ["Spring Boot", "Java", "Spring Security", "Keycloak (SPI, multi-realms)", "OAuth2 / OIDC", "JWT", "PostgreSQL", "Angular", "Docker"]
+    },
+    {
+      "company": "MS Solutions",
+      "tag": "Consulting · Tunisia",
+      "period": "Oct 2025 — Feb 2026",
+      "role": "Full Stack Developer — Java & Angular",
+      "project": "Dynamic Workflow Engine",
+      "bullets": [
+        "Built a dynamic workflow engine enabling graphical modelling of business processes.",
+        "Implemented configurable per-step dynamic forms with drag-and-drop.",
+        "Orchestrated and executed workflows with Temporal, monitored via Temporal UI.",
+        "Integrated external REST APIs for cross-service interoperability at each workflow step.",
+        "Handled role-based security and authentication with Keycloak."
+      ],
+      "tech": ["Spring Boot", "Java", "Temporal SDK", "Kafka", "Keycloak", "PostgreSQL", "RestTemplate", "Angular", "Docker", "Microservices"]
+    },
+    {
+      "company": "Inetum",
+      "tag": "Tunisia · Gov",
+      "period": "Jul 2023 — Sep 2025",
+      "role": "Full Stack Developer — Java / Angular",
+      "project": "E-consulat — Digitising consular services · Tunisian Ministry of Foreign Affairs",
+      "bullets": [
+        "Developed and maintained a document-management back office for the Tunisian diaspora.",
+        "Designed an online consular services portal: appointments, administrative requests, case tracking.",
+        "Integrated electronic document signing via Digigo, connected to the civil registry system.",
+        "Implemented security and authentication mechanisms with Keycloak.",
+        "Built a mass-notification module based on batch processing for bulk communications."
+      ],
+      "tech": ["Spring Boot", "Java", "JHipster", "Keycloak", "PostgreSQL", "Spring Batch", "WebSocket", "OpenAPI Generator", "Groovy", "Apache POI", "Angular", "Microservices"]
+    },
+    {
+      "company": "Inetum",
+      "tag": "Switzerland · Insurance",
+      "period": "Jan 2024 — Aug 2024",
+      "role": "Full Stack Developer — Angular",
+      "project": "ECA Insurance — Subscription management",
+      "bullets": [
+        "Built a web application for online ECA insurance subscriptions.",
+        "Created a back office to track and process requests through a CRM.",
+        "Monitored and analysed user traffic with Google Analytics."
+      ],
+      "tech": ["Angular", "TypeScript", "Google Analytics"]
+    },
+    {
+      "company": "Inetum",
+      "tag": "Tunisia · Internship",
+      "period": "Feb 2023 — Jul 2023",
+      "role": "Final-year Internship (PFE)",
+      "project": "E-banking financing process",
+      "bullets": [
+        "Developed a web application for a financing process within an e-banking platform."
+      ],
+      "tech": ["Spring Boot", "Angular", "Keycloak", "PostgreSQL", "NG-Zorro", "Formly", "Docker"]
+    }
+  ],
+  "skills": [
+    { "label": "Backend", "items": ["Java", "Spring Boot", "Spring Batch", "Spring Cloud", "Microservices", "Temporal", "Kafka", "RestTemplate", "MinIO", "Liquibase / Flyway", "Keycloak Admin-Client"] },
+    { "label": "Security & Auth", "items": ["Keycloak", "OAuth2 / OIDC", "JWT", "Spring Security"] },
+    { "label": "Frontend", "items": ["Angular", "TypeScript", "JavaScript", "HTML5", "CSS3", "NG-Zorro", "PrimeNG", "Formly", "Bootstrap"] },
+    { "label": "Databases", "items": ["PostgreSQL", "MySQL", "MongoDB"] },
+    { "label": "DevOps", "items": ["Docker", "SonarQube", "Prometheus", "Grafana"] },
+    { "label": "Tools & Method", "items": ["Git", "GitHub", "GitLab", "UML", "Agile", "Scrum"] }
+  ]
+}
